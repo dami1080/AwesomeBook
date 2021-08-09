@@ -1,12 +1,17 @@
+const containerDiv = document.querySelector('.container-div');
+
+const mainBookContainer = document.createElement('div');
+mainBookContainer.className = 'main-book-container';
+
 const bookArray = [
-    {title: "the lord of the rings", author: "Harry poter"},
-    {title: "go", author: "dare"},
+    {title: "The lord of the rings", author: "Harry poter"},
+    {title: "Things fall apart", author: "Chinua Achebe"},
 ];
 
+
 const createBookElement = function(title, author) {
-    const containerDiv = document.querySelector('.container-div');
-    const mainBookContainer = document.createElement('div');
-    mainBookContainer.className = 'main-book-container';
+    const bookContainer = document.createElement('div');
+    bookContainer.className = 'book-container';
 
     const titleDesc = document.createElement('div');
     titleDesc.className = 'title';
@@ -22,10 +27,11 @@ const createBookElement = function(title, author) {
 
     const hrElement = document.createElement('hr');
 
-    mainBookContainer.appendChild(titleDesc);
-    mainBookContainer.appendChild(authorDesc);
-    mainBookContainer.appendChild(removeBtn);
-    mainBookContainer.appendChild(hrElement);
+    bookContainer.appendChild(titleDesc);
+    bookContainer.appendChild(authorDesc);
+    bookContainer.appendChild(removeBtn);
+    bookContainer.appendChild(hrElement);
+    mainBookContainer.appendChild(bookContainer);
     containerDiv.appendChild(mainBookContainer);
 }
 
@@ -36,5 +42,14 @@ const addBook = function() {
   const newBook = {title: titleInputValue, author: authorInputValue};
 
   bookArray.push(newBook);
+
+  createBookElement(titleInputValue, authorInputValue);
 }
 
+const displayBooks = function(arr) {
+    bookArray.forEach((e) => {
+        createBookElement(e.title, e.author);
+    })
+}
+
+displayBooks(bookArray);
