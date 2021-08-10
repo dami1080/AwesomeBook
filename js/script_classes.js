@@ -62,12 +62,21 @@ class Book {
   }
 
   displayBooks() {
-    this.bookArray.forEach((element, index) => {
-      this.createBookElement(element.title, element.author, index);
-    });
-    containerDiv.appendChild(mainBookContainer);
+    if (this.bookArray !== null) {
+      this.bookArray.forEach((element, index) => {
+        this.createBookElement(element.title, element.author, index);
+      });
+      containerDiv.appendChild(mainBookContainer);
+    }
+  }
+
+  removeBook(index) {
+    const books = this.bookArray.filter((book, i) => i !== index);
+    localStorage.setItem('Books', JSON.stringify(books));
+    const parent = document.getElementById(index);
+    parent.parentNode.removeChild(parent);
   }
 }
-
 const myBook = new Book();
 myBook.getBooks();
+myBook.displayBooks();
