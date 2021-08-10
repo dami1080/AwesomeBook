@@ -5,30 +5,28 @@ const addBtn = document.querySelector('.add-btn');
 
 class Book {
   constructor() {
-    this.bookArray = [
-      { title: 'The lord of the rings', author: 'Harry Potter' },
-      { title: 'Things fall apart', author: 'Chinua Achebe' },
-    ];
+    this.bookArray = [];
   }
 
   getBooks() {
-    const books = JSON.parse(localStorage.getItem('Books'));
-    if (this.bookArray !== null) {
-      return this.bookArray;
+    this.bookArray = JSON.parse(localStorage.getItem('Books'));
+    if (this.bookArray === null) {
+      this.bookArray = [];
     }
-    return books;
   }
 
-  addBook() {
-    const titleInputValue = document.getElementById('title-input').value;
-    const authorInputValue = document.getElementById('author-input').value;
+  displayBooks() {
+    this.bookArray.forEach((element, index) => {
+      this.createBookElement(element.title, element.author, index);
+    });
+    containerDiv.appendChild(mainBookContainer);
+  }
 
-    const newBook = { title: titleInputValue, author: authorInputValue };
-
-    const bookArrLength = this.bookArray.push(newBook);
-
-    this.createBookElement(titleInputValue, authorInputValue, bookArrLength);
-    localStorage.setItem('Books', JSON.stringify(this.bookArray));
+  removeBook(index) {
+    const books = this.bookArray.filter((book, i) => i !== index);
+    localStorage.setItem('Books', JSON.stringify(books));
+    const parent = document.getElementById(index);
+    parent.parentNode.removeChild(parent);
   }
 
   createBookElement(title, author, index) {
@@ -61,22 +59,22 @@ class Book {
     mainBookContainer.appendChild(bookContainer);
   }
 
-  displayBooks() {
-    if (this.bookArray !== null) {
-      this.bookArray.forEach((element, index) => {
-        this.createBookElement(element.title, element.author, index);
-      });
-      containerDiv.appendChild(mainBookContainer);
-    }
-  }
+  addBook(title, author) {
+    const newBook = { title, author };
+    const bookArrLength = this.bookArray.push(newBook);
 
-  removeBook(index) {
-    const books = this.bookArray.filter((book, i) => i !== index);
-    localStorage.setItem('Books', JSON.stringify(books));
-    const parent = document.getElementById(index);
-    parent.parentNode.removeChild(parent);
+    this.createBookElement(title, author, bookArrLength);
+    localStorage.setItem('Books', JSON.stringify(this.bookArray));
   }
 }
-const myBook = new Book();
-myBook.getBooks();
-myBook.displayBooks();
+
+const newBook = new Book();
+newBook.getBooks();
+newBook.displayBooks();
+
+addBtn.addEventListener('click', () => {
+  const title = document.getElementById('title-input').value;
+  const author = document.getElementById('author-input').value;
+
+  newBook.addBook(title, author);
+});
