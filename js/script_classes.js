@@ -44,7 +44,8 @@ class Book {
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
-    removeBtn.addEventListener('click', this.removeBook.bind(null, index));
+    removeBtn.addEventListener('click', this.removeBook.bind(this, index));
+
     removeBtn.className = 'remove-btn btn btn-secondary';
     const removeBtnId = `remove-btn${index}`;
     removeBtn.id = removeBtnId;
@@ -60,8 +61,8 @@ class Book {
   }
 
   addBook(title, author) {
-    const newBook = { title, author };
-    const bookArrLength = this.bookArray.push(newBook);
+    const createNewBook = { title, author };
+    const bookArrLength = this.bookArray.push(createNewBook);
 
     this.createBookElement(title, author, bookArrLength);
     localStorage.setItem('Books', JSON.stringify(this.bookArray));
