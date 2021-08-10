@@ -1,9 +1,14 @@
+const containerDiv = document.querySelector('.container-div');
+const mainBookContainer = document.createElement('div');
+mainBookContainer.className = 'main-book-container';
+const addBtn = document.querySelector('.add-btn');
+ 
  class Book {
      constructor() {
         bookArray = [
             { title: 'The lord of the rings', author: 'Harry Potter' },
             { title: 'Things fall apart', author: 'Chinua Achebe' },
-         ]
+        ]
     }
 
    addBook() {
@@ -47,5 +52,12 @@
     bookContainer.appendChild(hrElement);
     mainBookContainer.appendChild(bookContainer);
   };
-
+   displayBooks(arr) {
+    arr.forEach((element, index) => {
+      createBookElement(element.title, element.author, index);
+    });
+    containerDiv.appendChild(mainBookContainer);
+  };
+  
+  displayBooks(bookArray);
 }
