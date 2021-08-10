@@ -3,7 +3,7 @@ const containerDiv = document.querySelector('.container-div');
 const mainBookContainer = document.createElement('div');
 mainBookContainer.className = 'main-book-container';
 
-const bookArray = [
+const bookArray = JSON.parse(localStorage.getItem('book')) || [
     {title: "The lord of the rings", author: "Harry poter"},
     {title: "Things fall apart", author: "Chinua Achebe"},
 ];
@@ -32,7 +32,7 @@ const createBookElement = function(title, author) {
     bookContainer.appendChild(removeBtn);
     bookContainer.appendChild(hrElement);
     mainBookContainer.appendChild(bookContainer);
-    containerDiv.appendChild(mainBookContainer);
+    
 }
 
 const addBook = function() {
@@ -44,12 +44,18 @@ const addBook = function() {
   bookArray.push(newBook);
 
   createBookElement(titleInputValue, authorInputValue);
+  localStorage.setItem('book', JSON.stringify(bookArray));
 }
+
+const addBtn = document.querySelector('.add-btn');
+addBtn.addEventListener('click', addBook);
 
 const displayBooks = function(arr) {
     bookArray.forEach((e) => {
         createBookElement(e.title, e.author);
     })
+    containerDiv.appendChild(mainBookContainer);
 }
 
 displayBooks(bookArray);
+
