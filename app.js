@@ -9,9 +9,10 @@ const bookArray = JSON.parse(localStorage.getItem('book')) || [
 ];
 
 
-const createBookElement = function(title, author) {
+const createBookElement = function(title, author, index) {
     const bookContainer = document.createElement('div');
     bookContainer.className = 'book-container';
+    bookContainer.id = index;
 
     const titleDesc = document.createElement('div');
     titleDesc.className = 'title';
@@ -23,6 +24,8 @@ const createBookElement = function(title, author) {
 
     const removeBtn = document.createElement('button');
     removeBtn.className = 'remove-btn';
+    const removeBtnId = `remove-btn${index}`;
+    removeBtn.id = removeBtnId;
     removeBtn.textContent = 'Remove';
 
     const hrElement = document.createElement('hr');
@@ -41,9 +44,9 @@ const addBook = function() {
 
   const newBook = {title: titleInputValue, author: authorInputValue};
 
-  bookArray.push(newBook);
+  const bookArrLength = bookArray.push(newBook);
 
-  createBookElement(titleInputValue, authorInputValue);
+  createBookElement(titleInputValue, authorInputValue, bookArrLength);
   localStorage.setItem('book', JSON.stringify(bookArray));
 }
 
@@ -51,11 +54,17 @@ const addBtn = document.querySelector('.add-btn');
 addBtn.addEventListener('click', addBook);
 
 const displayBooks = function(arr) {
-    bookArray.forEach((e) => {
-        createBookElement(e.title, e.author);
+    bookArray.forEach((element, index) => {
+        createBookElement(element.title, element.author, index);
     })
     containerDiv.appendChild(mainBookContainer);
 }
 
 displayBooks(bookArray);
 
+const removeBook = function(index) {
+  const books = bookArray.filter((book, i) => i !== index);
+  
+  const parent = document.getElementById('index');
+  parent.remove();
+}
