@@ -38,16 +38,13 @@ class Book {
     bookDesc.className = 'title mb-2';
     bookDesc.textContent = `"${title}" by ${author}`;
 
-
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', this.removeBook.bind(this, index));
 
-    removeBtn.className = 'remove-btn btn btn-secondary';
+    removeBtn.className = 'remove-btn btn';
     const removeBtnId = `remove-btn${index}`;
     removeBtn.id = removeBtnId;
-
-  
 
     bookContainer.appendChild(bookDesc);
     bookContainer.appendChild(removeBtn);
