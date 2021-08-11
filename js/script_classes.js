@@ -41,8 +41,8 @@ class Book {
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
     removeBtn.addEventListener('click', this.removeBook.bind(this, index));
-
     removeBtn.className = 'remove-btn btn';
+
     const removeBtnId = `remove-btn${index}`;
     removeBtn.id = removeBtnId;
 
