@@ -1,6 +1,6 @@
 const containerDiv = document.querySelector('.container-div');
 const mainBookContainer = document.createElement('div');
-mainBookContainer.className = 'main-book-container';
+mainBookContainer.className = 'main-book-container border border-secondary w-50 mx-auto';
 const addBtn = document.querySelector('.add-btn');
 
 class Book {
@@ -31,16 +31,13 @@ class Book {
 
   createBookElement(title, author, index) {
     const bookContainer = document.createElement('div');
-    bookContainer.className = 'book-container';
+    bookContainer.className = 'book-container d-flex justify-content-between p-2';
     bookContainer.id = index;
 
-    const titleDesc = document.createElement('div');
-    titleDesc.className = 'title mb-2';
-    titleDesc.textContent = title;
+    const bookDesc = document.createElement('div');
+    bookDesc.className = 'title mb-2';
+    bookDesc.textContent = `"${title}" by ${author}`;
 
-    const authorDesc = document.createElement('div');
-    authorDesc.className = 'author mb-2';
-    authorDesc.textContent = author;
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
@@ -50,13 +47,10 @@ class Book {
     const removeBtnId = `remove-btn${index}`;
     removeBtn.id = removeBtnId;
 
-    const hrElement = document.createElement('hr');
-    hrElement.className = 'w-50';
+  
 
-    bookContainer.appendChild(titleDesc);
-    bookContainer.appendChild(authorDesc);
+    bookContainer.appendChild(bookDesc);
     bookContainer.appendChild(removeBtn);
-    bookContainer.appendChild(hrElement);
     mainBookContainer.appendChild(bookContainer);
   }
 
