@@ -3,3 +3,28 @@
   margin: 0;
   padding: 0;
 }
+
+.book-container:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+.line {
+  border-bottom: 1px solid black;
+  width: 80px;
+  margin: 25px auto;
+}
+
+.btn {
+  background: #fff;
+  box-shadow: 2px 2px 2px #000;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+.add-btn {
+  float: right;
+}
