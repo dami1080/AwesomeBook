@@ -1,30 +1,48 @@
+import Book from './script_classes.js';
+
+const addBtn = document.querySelector('.add-btn');
 const nav = document.querySelector('.nav');
-const brandDiv = document.createElement('div');
-const ul = document.createElement('ul');
-const listLi = document.createElement('li');
-const addNewLi = document.createElement('li');
-const contactLi = document.createElement('li');
 
-brandDiv.textContent = 'Awesome Books';
-listLi.textContent = 'List';
-addNewLi.textContent = 'Add new';
-contactLi.textContent = 'Contact';
+function renderNavBar() {
+  const brandDiv = document.createElement('div');
+  const ul = document.createElement('ul');
+  const listLi = document.createElement('li');
+  const addNewLi = document.createElement('li');
+  const contactLi = document.createElement('li');
 
-nav.style.height = '10vh';
-nav.style.backgroundColor = '#333';
-nav.style.color = '#fff';
-nav.style.padding = '20px';
+  brandDiv.textContent = 'Awesome Books';
+  listLi.textContent = 'List';
+  addNewLi.textContent = 'Add new';
+  contactLi.textContent = 'Contact';
 
-ul.style.listStyle = 'none';
-ul.style.width = '200px';
-ul.style.display = 'flex';
-ul.style.justifyContent = 'space-between';
-ul.style.alignItems = 'center';
-ul.style.margin = '0';
-ul.style.cursor = 'pointer';
+  nav.style.height = '10vh';
+  nav.style.backgroundColor = '#333';
+  nav.style.color = '#fff';
+  nav.style.padding = '20px';
 
-nav.appendChild(brandDiv);
-ul.appendChild(listLi);
-ul.appendChild(addNewLi);
-ul.appendChild(contactLi);
-nav.appendChild(ul);
+  ul.style.listStyle = 'none';
+  ul.style.width = '200px';
+  ul.style.display = 'flex';
+  ul.style.justifyContent = 'space-between';
+  ul.style.alignItems = 'center';
+  ul.style.margin = '0';
+  ul.style.cursor = 'pointer';
+
+  nav.appendChild(brandDiv);
+  ul.appendChild(listLi);
+  ul.appendChild(addNewLi);
+  ul.appendChild(contactLi);
+  nav.appendChild(ul);
+}
+
+const newBook = new Book();
+newBook.getBooks();
+renderNavBar();
+newBook.displayBooks();
+
+addBtn.addEventListener('click', () => {
+  const title = document.getElementById('title-input').value;
+  const author = document.getElementById('author-input').value;
+
+  newBook.addBook(title, author);
+});
