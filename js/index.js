@@ -58,3 +58,11 @@ contactInfo.innerHTML =
 <li>Our address: Streetname 42, new york city</li>
 </ul>
 `
+const footer = document.querySelector('.footer');
+const p = document.createElement('p');
+p.textContent = 'Copyright';
+footer.appendChild(p);
+footer.style.height = '10vh';
+footer.style.backgroundColor = "#333";
+footer.style.color = "#fff";
+p.style.padding = "20px";
