@@ -22,10 +22,26 @@ export default class Book {
   }
 
   removeBook(index) {
+    console.log(`index: ${index} is to be removed`);
     const books = this.bookArray.filter((book, i) => i !== index);
-    localStorage.setItem('Books', JSON.stringify(books));
-    const parent = document.getElementById(index);
-    parent.parentNode.removeChild(parent);
+    localStorage.removeItem('Books');
+    if (books.length > 0) {
+      localStorage.setItem('Books', JSON.stringify(books));
+      const itemToBeRemoved = document.getElementById(index);
+      itemToBeRemoved.parentNode.removeChild(itemToBeRemoved);
+    }
+    window.location.reload();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  isNullOrEmpty(obj) {
+    if (obj === null) {
+      return true;
+    }
+    if (obj === '') {
+      return true;
+    }
+    return false;
   }
 
   createBookElement(title, author, index) {
@@ -51,10 +67,12 @@ export default class Book {
   }
 
   addBook(title, author) {
-    const createNewBook = { title, author };
-    const bookArrLength = this.bookArray.push(createNewBook);
+    if (!this.isNullOrEmpty(title) && !this.isNullOrEmpty(author)) {
+      const createNewBook = { title, author };
+      const bookArrLength = this.bookArray.push(createNewBook);
 
-    this.createBookElement(title, author, bookArrLength);
-    localStorage.setItem('Books', JSON.stringify(this.bookArray));
+      this.createBookElement(title, author, bookArrLength);
+      localStorage.setItem('Books', JSON.stringify(this.bookArray));
+    }
   }
 }

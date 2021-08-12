@@ -4,14 +4,12 @@
   padding: 0;
 }
 
-.book-container:nth-child(odd) {
-  background: #f9f9f9;
+body {
+  background: #fff;
 }
 
-.line {
-  border-bottom: 1px solid black;
-  width: 80px;
-  margin: 25px auto;
+.book-container:nth-child(odd) {
+  background: #f9f9f9;
 }
 
 .btn {
@@ -28,3 +26,10 @@
 .add-btn {
   float: right;
 }
+
+/* .hidden {
+  display: none;
+} */
+
+
+
