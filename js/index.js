@@ -46,3 +46,15 @@ addBtn.addEventListener('click', () => {
 
   newBook.addBook(title, author);
 });
+
+const contactInfo = document.querySelector('.contact');
+contactInfo.innerHTML = 
+`
+<h2>Contact Information</h2>
+<p>Do you any information or you want to say "Hello"? <br> You can reach out to us.</p>
+<ul>
+<li>Our email: mail@mail.com</li>
+<li>Our phone number: 0004d465</li>
+<li>Our address: Streetname 42, new york city</li>
+</ul>
+`
