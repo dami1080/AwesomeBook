@@ -1,9 +1,8 @@
 const containerDiv = document.querySelector('.container-div');
 const mainBookContainer = document.createElement('div');
 mainBookContainer.className = 'main-book-container border border-secondary w-50 mx-auto';
-const addBtn = document.querySelector('.add-btn');
 
-class Book {
+export default class Book {
   constructor() {
     this.bookArray = [];
   }
@@ -59,14 +58,3 @@ class Book {
     localStorage.setItem('Books', JSON.stringify(this.bookArray));
   }
 }
-
-const newBook = new Book();
-newBook.getBooks();
-newBook.displayBooks();
-
-addBtn.addEventListener('click', () => {
-  const title = document.getElementById('title-input').value;
-  const author = document.getElementById('author-input').value;
-
-  newBook.addBook(title, author);
-});
