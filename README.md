@@ -17,7 +17,7 @@ This is a simple website that displays a list of books and allows you to add and
 
 ## Live Demo
 
-<a href="https://raw.githack.com/dami1080/AwesomeBook/style-feature/index.html">Live version</a>
+<a href="https://raw.githack.com/dami1080/AwesomeBook/complete-website/index.html">Live version</a>
 
 ## ✒️ Author <a name = "author"></a>
 
