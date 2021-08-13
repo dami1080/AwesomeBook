@@ -1,5 +1,7 @@
 # Awesome_Books
 This is a simple website that displays a list of books and allows you to add and remove books from that list.
+
+![Homepage](./img/screenshot.png)
 ## Built With
 
 - HTML5

@@ -22,7 +22,6 @@ export default class Book {
   }
 
   removeBook(index) {
-    console.log(`index: ${index} is to be removed`);
     const books = this.bookArray.filter((book, i) => i !== index);
     localStorage.removeItem('Books');
     if (books.length > 0) {
