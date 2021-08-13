@@ -1,4 +1,5 @@
 import Book from './script_classes.js';
+import { DateTime } from './luxon.js';
 
 const containerDiv = document.querySelector('.container-div');
 const addBook = document.querySelector('.add-book');
@@ -119,3 +120,4 @@ contactUs.addEventListener('click', () => {
   containerDiv.classList.remove('d-block');
   containerDiv.classList.add('d-none');
 });
+document.getElementById('date-time').textContent = DateTime.now().toLocaleString(DateTime.DATETIME_MED).toString();

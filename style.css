@@ -14,7 +14,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+#date-time {
   color: #6290c3;
 }
 
@@ -44,7 +45,7 @@ h3 {
 
 .add-book,
 .contact {
-  margin-top: 130px;
+  margin-top: 120px;
 }
 
 
