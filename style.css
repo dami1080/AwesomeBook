@@ -4,27 +4,46 @@
   padding: 0;
 }
 
+body {
+  background: #fff;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  line-height: 2rem;
+}
+
+h1,
+h2,
+h3,
+#date-time {
+  color: #6290c3;
+}
+
+.container {
+  flex: 1;
+}
+
 .book-container:nth-child(odd) {
   background: #f9f9f9;
 }
 
-.line {
-  border-bottom: 1px solid black;
-  width: 80px;
-  margin: 25px auto;
-}
-
 .btn {
-  background: #fff;
+  background: #495867;
+  color: #fff;
   box-shadow: 2px 2px 2px #000;
   transition: 0.5s;
 }
 
 .btn:hover {
-  background: #333;
+  background: #577399;
   color: #fff;
 }
 
 .add-btn {
   float: right;
+}
+
+.add-book,
+.contact {
+  margin-top: 120px;
 }

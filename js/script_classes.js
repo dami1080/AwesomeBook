@@ -1,9 +1,8 @@
 const containerDiv = document.querySelector('.container-div');
 const mainBookContainer = document.createElement('div');
 mainBookContainer.className = 'main-book-container border border-secondary w-50 mx-auto';
-const addBtn = document.querySelector('.add-btn');
 
-class Book {
+export default class Book {
   constructor() {
     this.bookArray = [];
   }
@@ -24,9 +23,24 @@ class Book {
 
   removeBook(index) {
     const books = this.bookArray.filter((book, i) => i !== index);
-    localStorage.setItem('Books', JSON.stringify(books));
-    const parent = document.getElementById(index);
-    parent.parentNode.removeChild(parent);
+    localStorage.removeItem('Books');
+    if (books.length > 0) {
+      localStorage.setItem('Books', JSON.stringify(books));
+      const itemToBeRemoved = document.getElementById(index);
+      itemToBeRemoved.parentNode.removeChild(itemToBeRemoved);
+    }
+    window.location.reload();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  isNullOrEmpty(obj) {
+    if (obj === null) {
+      return true;
+    }
+    if (obj === '') {
+      return true;
+    }
+    return false;
   }
 
   createBookElement(title, author, index) {
@@ -52,21 +66,12 @@ class Book {
   }
 
   addBook(title, author) {
-    const createNewBook = { title, author };
-    const bookArrLength = this.bookArray.push(createNewBook);
+    if (!this.isNullOrEmpty(title) && !this.isNullOrEmpty(author)) {
+      const createNewBook = { title, author };
+      const bookArrLength = this.bookArray.push(createNewBook);
 
-    this.createBookElement(title, author, bookArrLength);
-    localStorage.setItem('Books', JSON.stringify(this.bookArray));
+      this.createBookElement(title, author, bookArrLength);
+      localStorage.setItem('Books', JSON.stringify(this.bookArray));
+    }
   }
 }
-
-const newBook = new Book();
-newBook.getBooks();
-newBook.displayBooks();
-
-addBtn.addEventListener('click', () => {
-  const title = document.getElementById('title-input').value;
-  const author = document.getElementById('author-input').value;
-
-  newBook.addBook(title, author);
-});
