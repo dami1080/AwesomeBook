@@ -25,8 +25,8 @@ function renderNavBar() {
   addNewLi.textContent = 'Add new';
   contactLi.textContent = 'Contact';
 
-  nav.style.height = '10vh';
-  nav.style.backgroundColor = '#08415c';
+  nav.style.height = '70px';
+  nav.style.backgroundColor = '#495867';
   nav.style.color = '#fff';
   nav.style.padding = '20px';
 
@@ -63,8 +63,8 @@ function renderFooter() {
   const p = document.createElement('p');
   p.textContent = 'Copyright \u00A9 2021';
   footer.appendChild(p);
-  footer.style.height = '10vh';
-  footer.style.backgroundColor = '#08415c';
+  footer.style.height = '70px';
+  footer.style.backgroundColor = '#495867';
   footer.style.color = '#fff';
   p.style.padding = '20px';
 }
@@ -81,4 +81,41 @@ addBtn.addEventListener('click', () => {
   const author = document.getElementById('author-input').value;
 
   newBook.addBook(title, author);
+});
+
+const listItems = document.querySelector('.list');
+const addNewItem = document.querySelector('.add-new-book');
+const contactUs = document.querySelector('.contact-us');
+
+listItems.addEventListener('click', () => {
+  addBook.classList.remove('d-block');
+  addBook.classList.add('d-none');
+
+  contactInfo.classList.remove('d-block');
+  contactInfo.classList.add('d-none');
+
+  containerDiv.classList.remove('d-none');
+  containerDiv.classList.add('d-block');
+});
+
+addNewItem.addEventListener('click', () => {
+  addBook.classList.remove('d-none');
+  addBook.classList.add('d-block');
+
+  contactInfo.classList.remove('d-block');
+  contactInfo.classList.add('d-none');
+
+  containerDiv.classList.remove('d-block');
+  containerDiv.classList.add('d-none');
+});
+
+contactUs.addEventListener('click', () => {
+  addBook.classList.remove('d-block');
+  addBook.classList.add('d-none');
+
+  contactInfo.classList.remove('d-none');
+  contactInfo.classList.add('d-block');
+
+  containerDiv.classList.remove('d-block');
+  containerDiv.classList.add('d-none');
 });
